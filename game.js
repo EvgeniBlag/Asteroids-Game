@@ -3,9 +3,13 @@ var context = canvas.getContext("2d");
 
 var aster = [];
 var timer = 0;
+var ship = {x:300,y:300};
 
 var asterimg = new Image();
 asterimg.src = "aster.png";
+
+shipimg = new Image();
+shipimg.src = "ship.png";
 
 var fonimg = new Image();
 fonimg.src = "fon.png";
@@ -43,12 +47,13 @@ aster[i].x=aster[i].x+aster[i].dx;
 aster[i].y=aster[i].y+aster[i].dy;
 //board
  if (aster[i].x>=550 || aster[i].x<0) aster[i].dx=-aster[i].dx;
- if (aster[i].y>=600 ) aster.slice;
+ if (aster[i].y>=600 ) aster.slice(i,1);
 }
  }
 
 function render (){
     context.drawImage(fonimg,0,0,600,600);
+    context.drawImage(shipimg,ship.x, ship.y,50,50);
     for(i in aster) context.drawImage(asterimg,aster[i].x,aster[i].y,50,50);
 
 }
@@ -64,3 +69,13 @@ var requestAnimationFrame = (function(){
      window.setTimeout(callback,1000 / 20);
     };
 })();
+
+//inishon 
+function init () {
+    canvas.addEventListener("mousemove",function(event){
+        ship.x=event.offsetX-25;
+        ship.y=event.offsetY-13;
+    });
+    Timer=0;
+    ship={x:300,y:300,animx:0,animy:0};
+}
