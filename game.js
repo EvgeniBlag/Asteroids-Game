@@ -8,6 +8,9 @@ var ship = {x:300,y:300};
 var asterimg = new Image();
 asterimg.src = "aster.png";
 
+fireimg = new Image();
+fireimg.src = "fire.png";
+
 shipimg = new Image();
 shipimg.src = "ship.png";
 
@@ -15,7 +18,12 @@ var fonimg = new Image();
 fonimg.src = "fon.png";
 
 
-aster.push({x:0,y:300,dx:10,dy:20});
+
+
+canvas.addEventListener("mousemove", function(event){
+    ship.x=event.offsetX-25;
+    ship.y=event.offsetY-13;
+});
 
 
 
@@ -47,7 +55,7 @@ aster[i].x=aster[i].x+aster[i].dx;
 aster[i].y=aster[i].y+aster[i].dy;
 //board
  if (aster[i].x>=550 || aster[i].x<0) aster[i].dx=-aster[i].dx;
- if (aster[i].y>=600 ) aster.slice(i,1);
+ if (aster[i].y>=600 ) aster.splice(i,1);
 }
  }
 
